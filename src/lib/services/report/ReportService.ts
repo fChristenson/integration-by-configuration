@@ -14,7 +14,7 @@ export class ReportService {
     // we convert the data in to a standard format
     // we store files for scheduled processing at a later date
     // we schedule a request to convert big files in to a report
-    return res.json([]);
+    return res.end();
   }
 
   /**
@@ -26,6 +26,7 @@ export class ReportService {
   public async getReports(req: Request, res: Response) {
     let result = [];
     const clientId = req.header(configs.clientIdHeader);
+    const requestCode = req.header(configs.requestCodeHeader);
 
     switch (clientId) {
       case configs.myBankConfig.clientId:
@@ -41,7 +42,22 @@ export class ReportService {
         break;
     }
 
-    return res.json(result);
+    /**
+     * By using a request code there is no limit to what we can express allowing 
+     * our client to request almost anything with configuration alone.
+     * 
+     * A good mental picture is to use the clientId for things that are always true
+     * for that client and the request code to express deviations.
+     */
+    switch (requestCode) {
+      case configs.myBankConfig.requestCodes.base64RequestCode:
+        /* tslint:disable */
+        console.log(`Converting response to base64 for client ${clientId} with code ${requestCode}`);
+        return res.end(Buffer.from(JSON.stringify(result)).toString("base64"));
+
+      default:
+        return res.json(result);
+    }
   }
 
   private async getExternalReports(req: Request, res: Response): Promise<IReport[]> {

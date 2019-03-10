@@ -8,6 +8,7 @@ import { config as spotifyConfig } from "./spotify";
 
 export interface IConfigs {
   clientIdHeader: string;
+  requestCodeHeader: string;
   googleConfig: IGoogleConfig;
   spotifyConfig: IClientConfig;
   myBankConfig: IMyBankConfig;
@@ -19,5 +20,6 @@ export const configs: IConfigs = {
   clientIdHeader: "X-client-id",
   googleConfig,
   myBankConfig,
+  requestCodeHeader: "X-code",
   spotifyConfig,
 };

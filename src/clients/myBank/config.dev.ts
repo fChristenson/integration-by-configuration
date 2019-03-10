@@ -10,6 +10,9 @@ export const config: IMyBankConfig = {
   healthUrl,
   jsonReportsUrl: "http://mybank.se",
   requestArrivalHeader: "X-request-arrived-at",
+  requestCodes: {
+    base64RequestCode: "base64",
+  },
   routes,
   serviceId: "token",
   serviceIdHeader: "X-my-bank-id",
