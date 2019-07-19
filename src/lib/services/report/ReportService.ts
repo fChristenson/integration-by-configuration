@@ -20,7 +20,7 @@ export class ReportService {
   /**
    * We maintain a generic interface but under the hood we have a path
    * that will lead to the custom behaviour so if the request is from
-   * our "special" client we hande it according to their needs but otherwise
+   * our "special" client we handle it according to their needs but otherwise
    * we will use the default behaviour.
    */
   public async getReports(req: Request, res: Response) {
