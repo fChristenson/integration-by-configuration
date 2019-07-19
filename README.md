@@ -30,7 +30,7 @@ Your goal should be to reduce the amount of permutations and custom logic you ha
 start adding generic logic until you start to see a pattern that you can abstract.
 
 The less forks in logic you have the easier it is to maintain and develop the system so if
-you can it help a lot if you can isolate the custom logic as much as possible.
+you can try to isolate the custom logic as much as possible.
 
 This will give you confidence when releasing new features as you can reduce the risk of causing
 a regression for another client.
